@@ -1,0 +1,17 @@
+# Librariile proiectului Jarvis (v1), cu versiuni fixate.
+# Instalare: python -m pip install -r requirements.txt
+
+# Telefonie
+twilio==9.11.2
+
+# Google Calendar
+google-api-python-client==2.201.0
+google-auth==2.59.1
+google-auth-oauthlib==1.5.0
+
+# AI: clasificarea emailurilor (v2)
+anthropic==1.12.1
+
+# Ajutatoare
+python-dotenv==1.2.4
+tzdata==2026.5

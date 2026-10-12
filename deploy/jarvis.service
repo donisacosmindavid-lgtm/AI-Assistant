@@ -1,0 +1,21 @@
+# Serviciul systemd pentru Jarvis, pe serverul Google Cloud.
+# Instalare: sudo cp deploy/jarvis.service /etc/systemd/system/ && sudo systemctl daemon-reload
+#            sudo systemctl enable --now jarvis
+
+[Unit]
+Description=Jarvis - asistent personal care suna pentru lucruri importante
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=UTILIZATOR
+WorkingDirectory=/home/UTILIZATOR/jarvis
+ExecStart=/home/UTILIZATOR/jarvis/.venv/bin/python -m jarvis porneste
+# Reporneste singur daca se opreste din orice motiv, dupa o pauza scurta.
+Restart=always
+RestartSec=30
+# Fara asta, mesajele ajung cu intarziere in jurnalul sistemului.
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+# Secrete - nu urca niciodata pe GitHub
+.env
+credentials.json
+token.json
+
+# Date locale (memoria SQLite) si jurnale
+*.db
+logs/
+
+# Python
+.venv/
+__pycache__/
+
+# Setari locale Claude Code (doar pe acest calculator)
+.claude/settings.local.json

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Edit(./.env)",
+      "Read(./credentials.json)",
+      "Edit(./credentials.json)",
+      "Read(./token.json)",
+      "Edit(./token.json)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "if grep -qiE \"\\.env|credentials\\.json|token\\.json\"; then echo \"BLOCAT: comanda contine numele unui fisier cu secrete (.env, credentials.json sau token.json).\" >&2; exit 2; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
